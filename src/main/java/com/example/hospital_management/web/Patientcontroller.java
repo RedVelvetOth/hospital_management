@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
 
 @Controller
 @AllArgsConstructor
@@ -18,7 +17,7 @@ public class Patientcontroller {
     private PatientRepository patientRepository;
     @GetMapping("/index")
     public String index(Model model, @RequestParam(name = "page", defaultValue = "0") int page,
-                        @RequestParam(name = "size", defaultValue = "2") int size,
+                        @RequestParam(name = "size", defaultValue = "3") int size,
                         @RequestParam(name = "kw", defaultValue = "") String kw){
         Page<Patient> patientPage = patientRepository.findByNameContains(kw,PageRequest.of(page,size));
         model.addAttribute("ListPatients", patientPage.getContent());

@@ -48,7 +48,7 @@ public class Patientcontroller {
         return "redirect:/index";
     }
 
-    @PostMapping("/editPatient")
+    @GetMapping("/editPatient")
     public String editPatient(Model model, Long id){
         Patient patient = patientRepository.findById(id).orElse(null);
         if (patient == null) throw new RuntimeException("Patient Not Found");

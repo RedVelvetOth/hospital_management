@@ -1,5 +1,6 @@
 package com.example.hospital_management.security;
 
+import com.example.hospital_management.security.service.UserDetailServiceImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,8 +21,10 @@ import javax.sql.DataSource;
 public class SecurityConfig {
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private UserDetailServiceImplementation userDetailServiceImplementation;
 
-    @Bean
+    //@Bean
     public JdbcUserDetailsManager jdbcUserDetailsManager(DataSource dataSource){
         return new JdbcUserDetailsManager(dataSource);
     }
@@ -43,6 +46,7 @@ public class SecurityConfig {
 //        httpSecurity.authorizeHttpRequests().requestMatchers("/admin/**").hasRole("ADMIN");
         httpSecurity.authorizeHttpRequests().anyRequest().authenticated();
         httpSecurity.exceptionHandling().accessDeniedPage("/notAuthorized");
+        httpSecurity.userDetailsService(userDetailServiceImplementation);
         return httpSecurity.build();
     }
 }

@@ -31,6 +31,19 @@ L'application permet:
 
 ![img.png](pictures/web_controller.png)
 
+### Implementing Authentication
+
+#### Using InMemory Authentication
+
+![img.png](pictures/in_memory_auth.png)
+
+#### Using User Detail Authentication
+
+![img.png](pictures/user_detail_auth.png)
+
 ### Demo
 
+![img.png](pictures/login.png)
+
 ![img.png](pictures/demo.png)
+
